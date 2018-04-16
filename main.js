@@ -1,35 +1,33 @@
-let mat =[
-            {name: "Fint brød", type: "Brød", amount: 30 , calories: 70, pris: 20, img: fintbrød.jpg },
-            {name: "Grovt brød", type: "Brød", amount: 45, calories: 90, pris: 30, img: grovtbrød.jpg},
-            {name: "Smør", type: "saus", amount: 6 , calories: 40 , pris: 3, img: smør.jpg },
-            {name: "Aioli", type: "saus", amount: 6 , calories: 25, pris: 6, img: aioli.png },
-            {name: "Salsa", type: "saus", amount: 6 , calories: 30, pris: 5, img: salsa.jpg},
-            {name: "Gulost", type: "ost", amount: 10 , calories: 61, pris: 6, img: gulost.png },
-            {name: "Cheddar", type: "ost", amount: 10 , calories: 42, pris: 4, img: cheddar.jpg},
-            {name: "Salami", type: "kjøtt", amount: 15 , calories: 34, pris: 7, img: salami.png },
-            {name: "Skinke", type: "kjøtt", amount: 15 , calories: 13, pris: 7, img: skinke.png },
-            {name: "Laks", type: "kjøtt", amount: 15 , calories: 24, pris: 10, img: laks.jpg },
-            {name: "Salat", type: "grønnsaker", amount: 3 , calories: 2, pris: 8, img: salat.png },
-            {name: "Agurk", type: "grønnsaker", amount: 3 , calories: 3, pris: 5, img: agurk.jpg },
-            {name: "Tomat", type: "grønnsaker", amount: 5 , calories: 4, pris: 6, img: tomat.png },
-            {name: "Paprika", type: "grønnsaker", amount: 3 , calories: 3, pris: 6, img: paprika.jpg },
-            {name: "Løk", type: "grønnsaker", amount: 3 , calories: 2, pris: 6, img: løk.jpg },
-        ];
-
-        let drikke = [
-            {name: "Eplejuice", type: "Juice", amount: 200 , calories: 86, pris: 20, img: eplejuice.jpg },
-            {name: "Te", type: "Te", amount: 150 , calories: 0 , pris: 10, img: te.jpeg},
-            {name: "Appelsinjuice", type: "Juice", amount: 200 , calories: 86, pris: 25, img: appelsinjuice.jpg },
-            {name: "Kaffer", type: "Kaffe", amount: 150 , calories: 0, pris: 10 , img: kaffe.png},
-            {name: "Lett melk", type: "Melk", amount: 200 , calories: 86, pris: 20, img: melk.jpg },
-            {name: "Ekstra lett melk", type: "Melk", amount: 200 , calories: 70, pris: 22, img: melk.jpg },
-            {name: "Skummet melk", type: "Melk", amount: 200 , calories: 52, pris: 24, img: melk.jpg},
-            {name: "Cola", type: "Brus", amount: 330 , calories: 139, pris: 20, img: cola.jpg},
-        ];
-
-
-
 const select = document.getElementById("filter");
+const categories = document.getElementById("categories");
+const products = document.getElementById("products");
+
+const data = [
+  { id: 10201, name: "Egenkomponert Baguette", cat: "food", gram: 75, calories: 120, price: 79, render: false },
+  { id: 10001, name: "Fint brød", cat: "food", type: "Brød", gram: 30, calories: 70, price: 20, img: "fintbrod.jpg" },
+  { id: 10002, name: "Grovt brød", cat: "food", type: "Brød", gram: 45, calories: 90, price: 30, img: "grovtbrod.jpg" },
+  { id: 10003, name: "Smør", cat: "food", type: "saus", gram: 6, calories: 40 , price: 3, img: "smor.jpg" },
+  { id: 10004, name: "Aioli", cat: "food", type: "saus", gram: 6, calories: 25, price: 6, img: "aioli.png" },
+  { id: 10005, name: "Salsa", cat: "food", type: "saus", gram: 6, calories: 30, price: 5, img: "salsa.jpg" },
+  { id: 10006, name: "Gulost", cat: "food", type: "ost", gram: 10, calories: 61, price: 6, img: "gulost.png" },
+  { id: 10007, name: "Cheddar", cat: "food", type: "ost", gram: 10, calories: 42, price: 4, img: "cheddar.jpg" },
+  { id: 10008, name: "Salami", cat: "food", type: "kjøtt", gram: 15, calories: 34, price: 7, img: "salami.png" },
+  { id: 10009, name: "Skinke", cat: "food", type: "kjøtt", gram: 15, calories: 13, price: 7, img: "skinke.png" },
+  { id: 10010, name: "Laks", cat: "food", type: "kjøtt", gram: 15, calories: 24, price: 10, img: "laks.jpg" },
+  { id: 10011, name: "Salat", cat: "food", type: "grønnsaker", gram: 3, calories: 2, price: 8, img: "salat.png" },
+  { id: 10012, name: "Agurk", cat: "food", type: "grønnsaker", gram: 3, calories: 3, price: 5, img: "agurk.jpg" },
+  { id: 10013, name: "Tomat", cat: "food", type: "grønnsaker", gram: 5, calories: 4, price: 6, img: "tomat.jpg" },
+  { id: 10014, name: "Paprika", cat: "food", type: "grønnsaker", gram: 3, calories: 3, price: 6, img: "paprika.jpg" },
+  { id: 10015, name: "Løk", cat: "food", type: "grønnsaker", gram: 3, calories: 2, price: 6, img: "lok.jpg" },
+  { id: 10101, name: "Eplejuice", cat: "drink", type: "Juice", gram: 200, calories: 86, price: 20, img: "eplejuice.jpg" },
+  { id: 10102, name: "Te", cat: "drink", type: "Te", gram: 150, calories: 0, price: 10, img: "te.jpeg" },
+  { id: 10103, name: "Appelsinjuice", cat: "drink", type: "Juice", gram: 200, calories: 86, price: 25, img: "appelsinjuice.jpg" },
+  { id: 10104, name: "Kaffer", cat: "drink", type: "Kaffe", gram: 150, calories: 0, price: 10 , img: "kaffe.png" },
+  { id: 10105, name: "Lett melk", cat: "drink", type: "Melk", gram: 200, calories: 86, price: 20, img: "melk.jpg" },
+  { id: 10106, name: "Ekstra lett melk", cat: "drink", type: "Melk", gram: 200, calories: 70, price: 22, img: "melk.jpg" },
+  { id: 10107, name: "Skummet melk", cat: "drink", type: "Melk", gram: 200, calories: 52, price: 24, img: "melk.jpg" },
+  { id: 10108, name: "Cola", cat: "drink", type: "Brus", gram: 330, calories: 139, price: 20, img: "cola.jpg" }
+];
 
 select.addEventListener("input", evt => {
   const target = evt.target;
@@ -54,3 +52,61 @@ select.addEventListener("input", evt => {
       break;
   }
 });
+
+renderProducts();
+
+function renderProducts(theData = data) {
+  products.innerHTML = "";
+
+  theData.forEach(product => {
+    if (product.render === false) return renderCustom();
+
+    products.innerHTML += `
+    <div class="product">
+      <div class="name">${product.name}</div>
+      <img src="assets/${product.img}">
+      <div class="info">
+        <div>Pris: ${product.price},- Kalorier: ${product.calories} kcal, Vekt: ${product.gram} g</div>
+        <button class="btn" onclick="addProduct(${product.id})">Legg til</button>
+      </div>
+    </div>
+    `;
+  });
+}
+
+function renderCustom() {
+  products.innerHTML += `
+  <div class="product">
+    <div class="name">Custom Baguette</div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Baguettes_-_stonesoup.jpg">
+    <select class="btn">
+      <option value="fint" selected>Fint</option>
+      <option value="grovt">Grovt</option>
+    </select>
+    <div class="info">
+      <div>Pris: 79,- Kalorier: 100/120 kcal, Vekt: 75 g</div>
+      <button class="btn" onclick="addProduct(001)">Legg til</button>
+    </div>
+  </div>
+  `;
+}
+
+function addProduct(id) {
+  console.log(data.find(elem => elem.id === id));
+}
+
+function toggleCategories() {
+  categories.classList.toggle("active");
+}
+
+function showCategory(category) {
+  if (category === "all") {
+    renderProducts();
+  } else if (category === "food") {
+    const filteredData = data.filter(item => item.cat === "food");
+    renderProducts(filteredData);
+  } else if (category === "drink") {
+    const filteredData = data.filter(item => item.cat === "drink");
+    renderProducts(filteredData);
+  }
+}
