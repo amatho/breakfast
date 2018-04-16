@@ -6,3 +6,4 @@
 3. Som en **sunn person** ønsker jeg **å enkelt finne ut om frokosten er sunn**, slik at **jeg blir frisk og rask**.
 4. Som **hotellbeboer** ønsker jeg **å få en oversikt over matalternativer ved frokost**, slik at **jeg blir et glad menneske**.
 5. Som **frokostkunde** ønsker jeg **å få tilsendt ordrebekreftelse**, slik at **jeg har oversikt over hva jeg har bestilt**.
+6. Som **frokostkunde** ønsker jeg **å se prisene på de forskjellige rettene**, slik at **jeg kan velge det billigste alternativet**.
