@@ -11,13 +11,15 @@
   <div id="title">Frokostvelgeren</div>
   <main>
     <div id="categories">
-      <button onclick="showCategory('food')">Mat</button>
-      <button onclick="showCategory('drink')">Drikke</button>
+      <button class="btn" onclick="showCategory('all')">Alle</button>
+      <button class="btn" onclick="showCategory('food')">Mat</button>
+      <button class="btn" onclick="showCategory('drink')">Drikke</button>
     </div>
     <div id="product-menu">
-      <button onclick="toggleCategories()">Kategorier</button>
+      <button class="btn" onclick="toggleCategories()">Kategorier</button>
       <div class="spacer"></div>
-      <select id="filter">
+      <span style="font-size: 0.8rem;">Sorter etter:&nbsp;</span>
+      <select id="filter" class="btn">
         <option value="none">Ingen</option>
         <option value="priceAsc">Pris - Stigende</option>
         <option value="priceDesc">Pris - Synkende</option>
@@ -25,7 +27,17 @@
         <option value="calDesc">Kalorier Synkende</option>
       </select>
     </div>
-    <div id="products"></div>
+    <div id="products">
+      <div class="product">
+        <div class="title">Custom Baguette</div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Baguettes_-_stonesoup.jpg">
+        <select>
+          <option value="fint" selected>Fint</option>
+          <option value="grovt">Grovt</option>
+        </select>
+        <button onclick="addProduct(001)">Legg til</button>
+      </div>
+    </div>
   </main>
 
   <script src="main.js" defer></script>
