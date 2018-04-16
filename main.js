@@ -77,7 +77,7 @@ function renderProducts(theData = data) {
 function renderCustom() {
   products.innerHTML += `
   <div class="product">
-    <div class="name">Custom Baguette</div>
+    <div class="name">Egenkomponert Baguette</div>
     <img src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Baguettes_-_stonesoup.jpg">
     <select class="btn">
       <option value="fint" selected>Fint</option>
@@ -85,7 +85,7 @@ function renderCustom() {
     </select>
     <div class="info">
       <div>Pris: 79,- Kalorier: 100/120 kcal, Vekt: 75 g</div>
-      <button class="btn" onclick="addProduct(001)">Legg til</button>
+      <button class="btn" onclick="addProduct(10201)">Legg til</button>
     </div>
   </div>
   `;
