@@ -33,24 +33,28 @@ select.addEventListener("input", evt => {
   const target = evt.target;
   const value = target.options[target.selectedIndex].value;
   console.log("input received", value);
+  let sortedArray;
 
   switch (value) {
     case "priceAsc":
-
+      sortedArray = sortAscending(data, "price");
       break;
     case "priceDesc":
-
+      sortedArray = sortDescending(data, "price");
       break;
     case "calAsc":
-
+      sortedArray = sortAscending(data, "calories");
       break;
     case "calDesc":
-
+      sortedArray = sortDescending(data, "calories");
       break;
 
     default:
+      sortedArray = data;
       break;
   }
+
+  renderProducts(sortedArray);
 });
 
 renderProducts();
@@ -66,9 +70,9 @@ function renderProducts(theData = data) {
       <div class="name">${product.name}</div>
       <img src="assets/${product.img}">
       <div class="info">
-        <div>Pris: ${product.price},- Kalorier: ${product.calories} kcal, Vekt: ${product.gram} g</div>
-        <button class="btn" onclick="addProduct(${product.id})">Legg til</button>
+        Pris: ${product.price},- Kalorier: ${product.calories} kcal, Vekt: ${product.gram} g
       </div>
+      <button onclick="addProduct(${product.id})">kjøp</button>
     </div>
     `;
   });
@@ -84,9 +88,9 @@ function renderCustom() {
       <option value="grovt">Grovt</option>
     </select>
     <div class="info">
-      <div>Pris: 79,- Kalorier: 100/120 kcal, Vekt: 75 g</div>
-      <button class="btn" onclick="addProduct(10201)">Legg til</button>
+      Pris: 79,- Kalorier: 100/120 kcal, Vekt: 75 g
     </div>
+    <button onclick="addProduct(10201)">kjøp</button>
   </div>
   `;
 }
@@ -109,4 +113,12 @@ function showCategory(category) {
     const filteredData = data.filter(item => item.cat === "drink");
     renderProducts(filteredData);
   }
+}
+
+function sortDescending(array, key) {
+    return array.slice(0).sort((a, b) => b[key] - a[key]);
+}
+
+function sortAscending(array, key) {
+    return array.slice(0).sort((a, b) => a[key] - b[key]);
 }

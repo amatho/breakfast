@@ -11,12 +11,23 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  right: 0;
+  display: flex;
+  flex-direction: row;
   padding: 16px 32px;
   font-size: 1.4rem;
   background-color: #212121;
   color: #ffffff;
   z-index: 99;
+}
+
+#cart-button {
+  display: block;
+  font-size: 1.2rem;
+  background: none;
+  color: #ffffff;
+  border: 0;
+  padding: 4px;
 }
 
 main {
@@ -86,6 +97,13 @@ main {
   max-height: 200px;
   margin: 0 8px 24px 8px;
   background-color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 2px;
+  transition: border-color 200ms;
+}
+
+#products .product:hover {
+  border: 2px solid #212121;
 }
 
 #products .product .name {
@@ -116,19 +134,33 @@ main {
   bottom: 0;
   left: 0;
   width: 100%;
-}
-
-#products .product .info div {
-  width: 100%;
+  padding: 4px 0 8px 0;
   background: #ffffff;
   font-size: 0.8rem;
   text-align: center;
 }
 
 #products .product button {
-  width: 100%;
-  padding: 4px;
-  font-size: 0.8rem;
+  position: absolute;
+  top: 40%;
+  margin: 0 auto;
+  padding: 8px;
+  font-size: 1rem;
+  background: #212121;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  text-transform: uppercase;
+  transform: scale(0);
+  transition: transform 200ms;
+}
+
+#products .product:hover button {
+  transform: scale(1);
+}
+
+#products .product:focus button {
+  transform: scale(1);
 }
 
 .btn {
@@ -149,6 +181,24 @@ main {
 
 @media screen and (max-width: 600px) {
   #products .product {
-    width: 46%;
+    width: 42%;
+  }
+}
+
+@media screen and (max-width: 486px) {
+  #product-menu {
+    flex-direction: column;
+  }
+
+  #product-menu button {
+    margin-bottom: 8px;
+  }
+
+  #categories {
+    transform-origin: top center;
+  }
+
+  #products .product {
+    width: 100%;
   }
 }
