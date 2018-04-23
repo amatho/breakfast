@@ -1,7 +1,3 @@
-const select = document.getElementById("filter");
-const categories = document.getElementById("categories");
-const products = document.getElementById("products");
-
 const data = [
   { id: 10201, name: "Egenkomponert Baguette", cat: "food", gram: 75, calories: 120, price: 79, render: false },
   { id: 10001, name: "Fint brød", cat: "food", type: "Brød", gram: 30, calories: 70, price: 20, img: "fintbrod.jpg" },
@@ -28,6 +24,16 @@ const data = [
   { id: 10107, name: "Skummet melk", cat: "drink", type: "Melk", gram: 200, calories: 52, price: 24, img: "melk.jpg" },
   { id: 10108, name: "Cola", cat: "drink", type: "Brus", gram: 330, calories: 139, price: 20, img: "cola.jpg" }
 ];
+
+const select = document.getElementById("filter");
+const categories = document.getElementById("categories");
+const products = document.getElementById("products");
+const cartButton = document.getElementById("cart-button");
+const cart = document.getElementById("cart");
+const cartItems = document.getElementById("cart-items");
+const sumDiv = document.getElementById("sum");
+
+let cartData = [];
 
 select.addEventListener("input", evt => {
   const target = evt.target;
@@ -57,7 +63,17 @@ select.addEventListener("input", evt => {
   renderProducts(sortedArray);
 });
 
+cartButton.addEventListener("click", evt => cart.classList.toggle("active"));
+
 renderProducts();
+cartItems.innerHTML = `
+<div class="item">
+  <div class="name">
+    Ingen varer i handlekurven.
+  </div>
+</div>
+`;
+sumDiv.innerHTML = "0,-";
 
 function renderProducts(theData = data) {
   products.innerHTML = "";
@@ -95,8 +111,39 @@ function renderCustom() {
   `;
 }
 
+function renderCartItems(data = cartData) {
+  cartItems.innerHTML = "";
+
+  data.forEach(item => {
+    cartItems.innerHTML += `
+    <div class="item">
+      <div class="name">${item.name}</div>
+      <div class="quantity">Antall: ${item.quantity}</div>
+      <div class="price">${item.price},-</div>
+    </div>
+    `;
+  });
+}
+
 function addProduct(id) {
-  console.log(data.find(elem => elem.id === id));
+  cartAnimation();
+
+  const findId = elem => elem.id === id;
+  const target = data.find(findId);
+  const existingItem = cartData.find(findId);
+  console.log(target);
+
+  if (existingItem === undefined) {
+    target.quantity = 1;
+    cartData.push(target);
+  } else {
+    existingItem.quantity += 1;
+  }
+
+  renderCartItems();
+
+  const sum = cartData.reduce((acc, item) => acc + item.quantity * item.price, 0);
+  sumDiv.innerHTML = sum + ",-";
 }
 
 function toggleCategories() {
@@ -113,12 +160,29 @@ function showCategory(category) {
     const filteredData = data.filter(item => item.cat === "drink");
     renderProducts(filteredData);
   }
+
+  categories.classList.remove("active");
 }
 
 function sortDescending(array, key) {
-    return array.slice(0).sort((a, b) => b[key] - a[key]);
+  return array.slice(0).sort((a, b) => b[key] - a[key]);
 }
 
 function sortAscending(array, key) {
-    return array.slice(0).sort((a, b) => a[key] - b[key]);
+  return array.slice(0).sort((a, b) => a[key] - b[key]);
+}
+
+function cartAnimation() {
+  const keyframes = [
+    { transform: "scale(1.3) rotate(-30deg)" },
+    { transform: "scale(1.3) rotate(30deg)" },
+    { transform: "scale(1) rotate(0)" }
+  ];
+
+  const options = {
+    duration: 500,
+    easing: "linear"
+  };
+
+  cartButton.animate(keyframes, options);
 }

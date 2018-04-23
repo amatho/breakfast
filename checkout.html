@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <style>
+     body {
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+       background: #212121;
+       font-family: Arial, Helvetica, sans-serif;
+     }
+     .card {
+       max-width: 80%;
+       margin: 36px auto;
+       padding: 16px 8px;
+       background: #ffffff;
+       text-align: center;
+     }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Takk for handelen!</h1>
+      <p class="big">
+        Din ordre er bestilt med ordrenummer #<span id="order"></span>
+      </p>
+      <p>
+        Vi håper du får en fin frokost. På gjensyn maddafakka
+      </p>
+      <a href="index.html">Tilbake til butikken</a>
+    </div>
+
+    <script>
+     const order = document.getElementById("order");
+     order.innerHTML = Math.floor(Math.random() * (1000 - 100 + 1)) + 100;
+    </script>
+  </body>
+</html>
